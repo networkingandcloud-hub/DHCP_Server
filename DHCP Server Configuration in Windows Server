@@ -1,0 +1,203 @@
+DHCP Server Configuration in Windows Server
+Definition
+
+DHCP (Dynamic Host Configuration Protocol) automatically assigns:
+
+IP Address
+
+Subnet Mask
+
+Default Gateway
+
+DNS Server
+to client computers in a network.
+
+Requirement
+
+Windows Server installed
+
+Static IP configured on Server
+
+Active Directory Domain Services installed
+
+Logged in as Domain Administrator
+
+Example Used
+Network: 192.168.1.0
+Subnet Mask: 255.255.255.0
+DHCP Range: 192.168.1.100 – 192.168.1.200
+Gateway: 192.168.1.1
+DNS Server: 192.168.1.10
+
+PART 1: Install DHCP Role
+Step 1: Open Server Manager
+
+Login to Windows Server
+
+Open Server Manager
+
+Step 2: Add Roles and Features
+
+Click Manage
+
+Select Add Roles and Features
+
+Click Next
+
+Select Role-based or feature-based installation
+
+Click Next
+
+Select Local Server
+
+Click Next
+
+Step 3: Select DHCP Server Role
+
+Select DHCP Server
+
+Click Add Features
+
+Click Next
+
+Click Install
+
+PART 2: Authorize DHCP Server
+Step 1: Complete DHCP Configuration
+
+After installation, click Complete DHCP Configuration
+
+Select Use current credentials
+
+Click Commit
+
+Click Close
+
+PART 3: Create DHCP Scope
+Step 1: Open DHCP Console
+
+Open Server Manager
+
+Click Tools
+
+Select DHCP
+
+Step 2: Create New Scope
+
+Expand IPv4
+
+Right-click IPv4
+
+Click New Scope
+
+Click Next
+
+Step 3: Scope Name
+
+Enter Scope Name:
+
+Office_Network
+
+
+Click Next
+
+Step 4: IP Address Range
+
+Start IP:
+
+192.168.1.100
+
+
+End IP:
+
+192.168.1.200
+
+
+Subnet Mask:
+
+255.255.255.0
+
+
+Click Next
+
+Step 5: Exclusions (Optional)
+
+Add excluded IPs if needed
+
+Click Next
+
+Step 6: Lease Duration
+
+Default: 8 Days
+
+Click Next
+
+Step 7: Configure DHCP Options
+
+Select Yes, I want to configure these options now
+
+Click Next
+
+Step 8: Default Gateway
+
+Enter:
+
+192.168.1.1
+
+
+Click Add
+
+Click Next
+
+Step 9: DNS Server
+
+Domain Name:
+
+company.local
+
+
+DNS Server IP:
+
+192.168.1.10
+
+
+Click Add
+
+Click Next
+
+Step 10: Activate Scope
+
+Select Yes, activate this scope
+
+Click Next
+
+Click Finish
+
+PART 4: Verify DHCP Working
+On Client Machine
+
+Open Command Prompt
+
+Run:
+
+ipconfig /release
+ipconfig /renew
+ipconfig /all
+
+Verification
+
+Client receives IP automatically
+
+Gateway and DNS are assigned
+
+Client can access domain and internet
+
+PART 5: Common DHCP Commands
+ipconfig /all
+ipconfig /renew
+ipconfig /release
+
+Conclusion
+
+DHCP Server has been successfully installed, authorized, and configured in Windows Server.
+Client machines are now receiving IP addresses automatically.
